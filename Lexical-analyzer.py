@@ -4,37 +4,37 @@ def GetToken(Lexim):
     while True:
         match case:
             case 0:
-                if(Lexim[i]=="1"):
+                if(Lexim[i]=="1" and i<len(Lexim)):
                     i+=1
                     case="var1"
-                elif(Lexim[i]=="p"):
+                elif(Lexim[i]=="p" and i<len(Lexim)):
                     i+=1
                     case="if1"
-                elif(Lexim[i]=="b"):
+                elif(Lexim[i]=="b" and i<len(Lexim)):
                     i+=1
                     case="else_if1"
-                elif(Lexim[i]=="j"):
+                elif(Lexim[i]=="j" and i<len(Lexim)):
                     i+=1
                     case="else1"
-                elif(Lexim[i]=="n"):
+                elif(Lexim[i]=="n" and i<len(Lexim)):
                     i+=1
                     case="for1"
-                elif(Lexim[i]=="d"):
+                elif(Lexim[i]=="d" and i<len(Lexim)):
                     i+=1
                     case="d_checker"
-                elif(Lexim[i]=="e"):
+                elif(Lexim[i]=="e" and i<len(Lexim)):
                     i+=1
                     case="output1"
                 else:
-                    # case="operations"
-                    return "EROR"
+                    case="operations"
+                    
             # ----------------------------
             
             case "d_checker":
-                if (Lexim[i]=="a"):
+                if (Lexim[i]=="a" and i<len(Lexim)):
                     i=i+1
                     case="def1"
-                elif (Lexim[i]=="o"):
+                elif (Lexim[i]=="o" and i<len(Lexim)):
                     i=i+1
                     case="input1"
                 else:
@@ -43,13 +43,13 @@ def GetToken(Lexim):
             # ----------------------------
             
             case "var1":
-                if(Lexim[i]=="5"):
+                if(Lexim[i]=="5" and i<len(Lexim)):
                     i+=1
                     case="var2"
                 else:
                     return "EROR"
             case "var2":
-                if(Lexim[i]=="_"):
+                if(Lexim[i]=="_" and i<len(Lexim)):
                     i+=1
                     case="var3"
                 else:
@@ -72,49 +72,49 @@ def GetToken(Lexim):
             # ----------------------------
             
             case "if1":
-                if(Lexim[i]=="o"):
+                if(Lexim[i]=="o" and i<len(Lexim)):
                     i+=1
                     case="if2"
                 else:
                     return "EROR"
             case "if2":
-                if(Lexim[i]=="l"):
+                if(Lexim[i]=="l" and i<len(Lexim)):
                     i+=1
                     case="if3"
                 else:
                     return "EROR"
             case "if3":
-                if(Lexim[i]=="_"):
+                if(Lexim[i]=="_" and i<len(Lexim)):
                     i+=1
                     case="if4"
                 else:
                     return "EROR"
             case "if4":
-                if(Lexim[i]=="s"):
+                if(Lexim[i]=="s" and i<len(Lexim)):
                     i+=1
                     case="if5"
                 else:
                     return "EROR"
             case "if5":
-                if(Lexim[i]=="e"):
+                if(Lexim[i]=="e" and i<len(Lexim)):
                     i+=1
                     case="if6"
                 else:
                     return "EROR"
             case "if6":
-                if(Lexim[i]=="r"):
+                if(Lexim[i]=="r" and i<len(Lexim)):
                     i+=1
                     case="if7"
                 else:
                     return "EROR"
             case "if7":
-                if(Lexim[i]=="a"):
+                if(Lexim[i]=="a" and i<len(Lexim)):
                     i+=1
                     case="if8"
                 else:
                     return "EROR"
             case "if8":
-                if(Lexim[i]=="t"):
+                if(Lexim[i]=="t" and i<len(Lexim)):
                     i+=1
                     case="if9"
                 else:
@@ -128,37 +128,37 @@ def GetToken(Lexim):
             # ----------------------------
                 
             case "else_if1":
-                if(Lexim[i]=="e"):
+                if(Lexim[i]=="e" and i<len(Lexim)):
                     i+=1
                     case="else_if2"
                 else:
                     return "EROR"
             case "else_if2":
-                if(Lexim[i]=="h"):
+                if(Lexim[i]=="h" and i<len(Lexim)):
                     i+=1
                     case="else_if3"
                 else:
                     return "EROR"
             case "else_if3":
-                if(Lexim[i]=="e"):
+                if(Lexim[i]=="e" and i<len(Lexim)):
                     i+=1
                     case="else_if4"
                 else:
                     return "EROR"
             case "else_if4":
-                if(Lexim[i]=="s"):
+                if(Lexim[i]=="s" and i<len(Lexim)):
                     i+=1
                     case="else_if5"
                 else:
                     return "EROR"
             case "else_if5":
-                if(Lexim[i]=="h"):
+                if(Lexim[i]=="h" and i<len(Lexim)):
                     i+=1
                     case="else_if6"
                 else:
                     return "EROR"
             case "else_if6":
-                if(Lexim[i]=="t"):
+                if(Lexim[i]=="t" and i<len(Lexim)):
                     i+=1
                     case="else_if7"
                 else:
@@ -172,37 +172,37 @@ def GetToken(Lexim):
             # ----------------------------
             
             case "else1":
-                if(Lexim[i]=="a"):
+                if(Lexim[i]=="a" and i<len(Lexim)):
                     i+=1
                     case="else2"
                 else:
                     return "EROR"
             case "else2":
-                if(Lexim[i]=="h"):
+                if(Lexim[i]=="h" and i<len(Lexim)):
                     i+=1
                     case="else3"
                 else:
                     return "EROR"
             case "else3":
-                if(Lexim[i]=="a"):
+                if(Lexim[i]=="a" and i<len(Lexim)):
                     i+=1
                     case="else4"
                 else:
                     return "EROR"
             case "else4":
-                if(Lexim[i]=="n"):
+                if(Lexim[i]=="n" and i<len(Lexim)):
                     i+=1
                     case="else5"
                 else:
                     return "EROR"
             case "else5":
-                if(Lexim[i]=="a"):
+                if(Lexim[i]=="a" and i<len(Lexim)):
                     i+=1
                     case="else6"
                 else:
                     return "EROR"
             case "else6":
-                if(Lexim[i]=="m"):
+                if(Lexim[i]=="m" and i<len(Lexim)):
                     i+=1
                     case="else7"
                 else:
@@ -216,25 +216,25 @@ def GetToken(Lexim):
             # ----------------------------
             
             case "for1":
-                if(Lexim[i]=="a"):
+                if(Lexim[i]=="a" and i<len(Lexim)):
                     i+=1
                     case="for2"
                 else:
                     return "EROR"
             case "for2":
-                if(Lexim[i]=="m"):
+                if(Lexim[i]=="m" and i<len(Lexim)):
                     i+=1
                     case="for3"
                 else:
                     return "EROR"
             case "for3":
-                if(Lexim[i]=="a"):
+                if(Lexim[i]=="a" and i<len(Lexim)):
                     i+=1
                     case="for4"
                 else:
                     return "EROR"
             case "for4":
-                if(Lexim[i]=="z"):
+                if(Lexim[i]=="z" and i<len(Lexim)):
                     i+=1
                     case="for5"
                 else:
@@ -248,31 +248,31 @@ def GetToken(Lexim):
             # ----------------------------
             
             case "def1":
-                if(Lexim[i]=="s"):
+                if(Lexim[i]=="s" and i<len(Lexim)):
                     i+=1
                     case="def2"
                 else:
                     return "EROR"
             case "def2":
-                if(Lexim[i]=="t"):
+                if(Lexim[i]=="t" and i<len(Lexim)):
                     i+=1
                     case="def3"
                 else:
                     return "EROR"
             case "def3":
-                if(Lexim[i]=="o"):
+                if(Lexim[i]=="o" and i<len(Lexim)):
                     i+=1
                     case="def4"
                 else:
                     return "EROR"
             case "def4":
-                if(Lexim[i]=="o"):
+                if(Lexim[i]=="o" and i<len(Lexim)):
                     i+=1
                     case="def5"
                 else:
                     return "EROR"
             case "def5":
-                if(Lexim[i]=="r"):
+                if(Lexim[i]=="r" and i<len(Lexim)):
                     i+=1
                     case="def6"
                 else:
@@ -280,49 +280,49 @@ def GetToken(Lexim):
             case "def6":
                 if (i==len(Lexim)):
                     return "<CallToken>" 
-                elif(Lexim[i]=="a"):
+                elif(Lexim[i]=="a" and i<len(Lexim)):
                     i+=1
                     case="def7"
                 else:
                     return "EROR"
             case "def7":
-                if(Lexim[i]=="t"):
+                if(Lexim[i]=="t" and i<len(Lexim)):
                     i+=1
                     case="def8"
                 else:
                     return "EROR"
             case "def8":
-                if(Lexim[i]=="_"):
+                if(Lexim[i]=="_" and i<len(Lexim)):
                     i+=1
                     case="def9"
                 else:
                     return "EROR"
             case "def9":
-                if(Lexim[i]=="e"):
+                if(Lexim[i]=="e" and i<len(Lexim)):
                     i+=1
                     case="def10"
                 else:
                     return "EROR"
             case "def10":
-                if(Lexim[i]=="l"):
+                if(Lexim[i]=="l" and i<len(Lexim)):
                     i+=1
                     case="def11"
                 else:
                     return "EROR"
             case "def11":
-                if(Lexim[i]=="a"):
+                if(Lexim[i]=="a" and i<len(Lexim)):
                     i+=1
                     case="def12"
                 else:
                     return "EROR"
             case "def12":
-                if(Lexim[i]=="h"):
+                if(Lexim[i]=="h" and i<len(Lexim)):
                     i+=1
                     case="def13"
                 else:
                     return "EROR"
             case "def13":
-                if(Lexim[i]=="i"):
+                if(Lexim[i]=="i" and i<len(Lexim)):
                     i+=1
                     case="def14"
                 else:
@@ -336,7 +336,7 @@ def GetToken(Lexim):
             # ----------------------------
             
             case "input1":
-                if (Lexim[i]=="a"):
+                if (Lexim[i]=="a" and i<len(Lexim)):
                     i+=1
                     case="input2"
                 else:
@@ -350,31 +350,31 @@ def GetToken(Lexim):
             # ----------------------------
             
             case "output1":
-                if(Lexim[i]=="j"):
+                if(Lexim[i]=="j" and i<len(Lexim)):
                     i+=1
                     case="output2"
                 else:
                     return "EROR"
             case "output2":
-                if(Lexim[i]=="a"):
+                if(Lexim[i]=="a" and i<len(Lexim)):
                     i+=1
                     case="output3"
                 else:
                     return "EROR"
             case "output3":
-                if(Lexim[i]=="b"):
+                if(Lexim[i]=="b" and i<len(Lexim)):
                     i+=1
                     case="output4"
                 else:
                     return "EROR"
             case "output4":
-                if(Lexim[i]=="a"):
+                if(Lexim[i]=="a" and i<len(Lexim)):
                     i+=1
                     case="output5"
                 else:
                     return "EROR"
             case "output5":
-                if(Lexim[i]=="t"):
+                if(Lexim[i]=="t" and i<len(Lexim)):
                     i+=1
                     case="output6"
                 else:
@@ -387,7 +387,42 @@ def GetToken(Lexim):
             
             # ----------------------------
             
-        
+            case "operations":
+                if Lexim[i]=="+" and len(Lexim)==1:
+                    return "<Plus>"
+                if Lexim[i]=="-" and len(Lexim)==1:
+                    return "<Minus>"
+                if Lexim[i]=="*" and len(Lexim)==1:
+                    return "<Multiplication>"
+                if Lexim[i]=="/" and len(Lexim)==1:
+                    return "<Division>"
+                if Lexim[i]=="^" and len(Lexim)==1:
+                    return "<Square>"
+                if Lexim[i]=="+" and len(Lexim)==2:
+                    if Lexim[i+1]=="+":
+                        return "<PlusOne>"
+                if Lexim[i]=="-" and len(Lexim)==2:
+                    if Lexim[i+1]=="-" :
+                        return "<MinusOne>"
+                if Lexim[i]=="=" and len(Lexim)==1:
+                    return "<Quantification>" 
+                if Lexim[i]=="=" and len(Lexim)==2:
+                    if Lexim[i+1]=="=":
+                        return "<Equal>" 
+                if Lexim[i]=="<" and len(Lexim)==2:
+                    if Lexim[i+1]=="=":
+                        return "<SmallerEqual>" 
+                if Lexim[i]==">" and len(Lexim)==2:
+                    if  Lexim[i+1]=="=":
+                        return "<BiggerEqual>" 
+                if Lexim[i]==">" and len(Lexim)==1:
+                    return "<Bigger>" 
+                if Lexim[i]=="<" and len(Lexim)==1:
+                    return "<Smaller>"
+                else:
+                    return "EROR"
+                
+
         
         
         
@@ -404,21 +439,40 @@ List=List.split()
 
 open('Token.txt', 'w').close() # clear Token.txt file
 
+
 for i in range (len(List)):
     Token=GetToken(List[i])
+    
+    # GetToken returns : 
+    #<VarToken>
+    #<IfToken>
+    #<ElseifToken>
+    #<ElseToken>
+    #<ForToken>
+    #<CallToken>
+    #<DefToken>
+    #<InputToken>
+    #<OutputToken>
+    #operation tokens:  # <Plus><minus><Mulipliaction><Division><Square><PlusOne><MinusOne>
+                        # <Quantification><Equal><SmallerEqual><BiggerEqual><Smaller><Bigger>
+    #EROR
+    
     if Token=="EROR":
         print("Syntax Eror!")
+        
         break
     w_output=open("Token.txt","a")
     w_output.write(Token)
     w_output.write("\n")
     w_output.close()
     
-    
-r_Token=open("Token.txt","r")
-List1=r_Token.read()
-List1=List1.split('\n')
-for x in List1:
-    print(x)
-r_Token.close()
+   
+# print Tokens: 
+ 
+# r_Token=open("Token.txt","r")
+# List1=r_Token.read()
+# List1=List1.split('\n')
+# for x in List1:
+#     print(x)
+# r_Token.close()
     

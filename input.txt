@@ -7,3 +7,16 @@ dastoor
 dastoorat_elahi
 doa
 ejabat
+*
+/
++
+-
+++
+--
+^
+==
+<=
+>=
+>
+<
+=

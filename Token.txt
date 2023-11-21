@@ -7,3 +7,16 @@
 <DefToken>
 <InputToken>
 <OutputToken>
+<Multiplication>
+<Division>
+<Plus>
+<Minus>
+<PlusOne>
+<MinusOne>
+<Square>
+<Equal>
+<SmallerEqual>
+<BiggerEqual>
+<Bigger>
+<Smaller>
+<Quantification>
