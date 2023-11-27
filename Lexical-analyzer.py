@@ -479,5 +479,29 @@ for i in range (len(List)):
 # r_Token.close()
 
         
+        
+        
+        
+
+
+# tryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+
+# with open("input.txt",'r') as r_input:
+#     with open ("Token.txt","w") as w_input:
+#         lines_number=len(r_input.readlines())
+#         for i in range(lines_number):
+#             input_line=r_input.readline()
+#             input_line=input_line.split()
+#             for j in range(len(input_line)):
+#                 if input_line[j].isnumeric==True:
+#                     w_input.write("<NumberToken>")
+#                 else:
+#                     Token=GetToken(input_line[j])
+#                     if Token=="EROR":
+#                         print("Lexim EROR in line ",i)
+#                         exit
+#                     w_input.write(Token)
+#             w_input.write('\n')
+            
     
     
