@@ -1,22 +1,11 @@
 pol_serat
 behesht
-15_rtchgh4
-jahanam
-namaz
+15_rtchgh4 jahanam
+namaz + 
 dastoor
 dastoorat_elahi
 doa
-ejabat
-*
-/
-+
+ejabat 842965
 -
-++
---
-^
-==
-<=
->=
->
-<
-=
+*
+7865874

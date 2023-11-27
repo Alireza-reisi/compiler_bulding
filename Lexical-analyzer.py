@@ -441,7 +441,10 @@ open('Token.txt', 'w').close() # clear Token.txt file
 
 
 for i in range (len(List)):
-    Token=GetToken(List[i])
+    if List[i].isnumeric()==True:
+        Token="<NumberToken>"
+    else:
+        Token=GetToken(List[i])
     
     # GetToken returns : 
     #<VarToken>
@@ -465,8 +468,7 @@ for i in range (len(List)):
     w_output.write(Token)
     w_output.write("\n")
     w_output.close()
-    
-   
+
 # print Tokens: 
  
 # r_Token=open("Token.txt","r")
@@ -475,4 +477,7 @@ for i in range (len(List)):
 # for x in List1:
 #     print(x)
 # r_Token.close()
+
+        
+    
     
