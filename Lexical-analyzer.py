@@ -482,9 +482,8 @@ def GetToken(Lexim):
         
         
         
-
-
-# tryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+# ===============================================
+# =================== main2: ====================
 
 with open("input.txt",'r') as r_input: 
     line_len=len(r_input.readlines())
@@ -496,10 +495,23 @@ with open("input.txt",'r') as r_input:
         input_line=r_input.readline()
         input_line=input_line.split()
         for j in range(len(input_line)):
-            if input_line[j].isnumeric()==True:
+            if input_line[j].isnumeric()==True: # if our input was number
                 Token="<NumberToken>"
             else:
                 Token=GetToken(input_line[j])
+                #GetToken returns : 
+                #<VarToken>
+                #<IfToken>
+                #<ElseifToken>
+                #<ElseToken>
+                #<ForToken>
+                #<CallToken>
+                #<DefToken>
+                #<InputToken>
+                #<OutputToken>
+                #operation tokens:  # <Plus><minus><Mulipliaction><Division><Square><PlusOne><MinusOne>
+                                    # <Quantification><Equal><SmallerEqual><BiggerEqual><Smaller><Bigger>
+                # EROR
                 if Token=="EROR":
                     print("Lexim EROR in line ",i)
                     exit()
