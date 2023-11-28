@@ -431,52 +431,52 @@ def GetToken(Lexim):
 # ==================== main: ====================
 
 
-# -------- read file --------
-r_input=open("input.txt","r")
-List=r_input.read()
-r_input.close()
-List=List.split()
+# # -------- read file --------
+# r_input=open("input.txt","r")
+# List=r_input.read()
+# r_input.close()
+# List=List.split()
 
-open('Token.txt', 'w').close() # clear Token.txt file
+# open('Token.txt', 'w').close() # clear Token.txt file
 
 
-for i in range (len(List)):
-    if List[i].isnumeric()==True:
-        Token="<NumberToken>"
-    else:
-        Token=GetToken(List[i])
+# for i in range (len(List)):
+#     if List[i].isnumeric()==True:
+#         Token="<NumberToken>"
+#     else:
+#         Token=GetToken(List[i])
     
-    # GetToken returns : 
-    #<VarToken>
-    #<IfToken>
-    #<ElseifToken>
-    #<ElseToken>
-    #<ForToken>
-    #<CallToken>
-    #<DefToken>
-    #<InputToken>
-    #<OutputToken>
-    #operation tokens:  # <Plus><minus><Mulipliaction><Division><Square><PlusOne><MinusOne>
-                        # <Quantification><Equal><SmallerEqual><BiggerEqual><Smaller><Bigger>
-    #EROR
+#     # GetToken returns : 
+#     #<VarToken>
+#     #<IfToken>
+#     #<ElseifToken>
+#     #<ElseToken>
+#     #<ForToken>
+#     #<CallToken>
+#     #<DefToken>
+#     #<InputToken>
+#     #<OutputToken>
+#     #operation tokens:  # <Plus><minus><Mulipliaction><Division><Square><PlusOne><MinusOne>
+#                         # <Quantification><Equal><SmallerEqual><BiggerEqual><Smaller><Bigger>
+#     #EROR
     
-    if Token=="EROR":
-        print("Syntax Eror!")
+#     if Token=="EROR":
+#         print("Syntax Eror!")
         
-        break
-    w_output=open("Token.txt","a")
-    w_output.write(Token)
-    w_output.write("\n")
-    w_output.close()
+#         break
+#     w_output=open("Token.txt","a")
+#     w_output.write(Token)
+#     w_output.write("\n")
+#     w_output.close()
 
-# print Tokens: 
+# # print Tokens: 
  
-# r_Token=open("Token.txt","r")
-# List1=r_Token.read()
-# List1=List1.split('\n')
-# for x in List1:
-#     print(x)
-# r_Token.close()
+# # r_Token=open("Token.txt","r")
+# # List1=r_Token.read()
+# # List1=List1.split('\n')
+# # for x in List1:
+# #     print(x)
+# # r_Token.close()
 
         
         
@@ -486,22 +486,27 @@ for i in range (len(List)):
 
 # tryyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
 
-# with open("input.txt",'r') as r_input:
-#     with open ("Token.txt","w") as w_input:
-#         lines_number=len(r_input.readlines())
-#         for i in range(lines_number):
-#             input_line=r_input.readline()
-#             input_line=input_line.split()
-#             for j in range(len(input_line)):
-#                 if input_line[j].isnumeric==True:
-#                     w_input.write("<NumberToken>")
-#                 else:
-#                     Token=GetToken(input_line[j])
-#                     if Token=="EROR":
-#                         print("Lexim EROR in line ",i)
-#                         exit
-#                     w_input.write(Token)
-#             w_input.write('\n')
+with open("input.txt",'r') as r_input: 
+    line_len=len(r_input.readlines())
+    
+open('Token.txt', 'w').close() # clear Token.txt file
+w_output=open("Token.txt","w")
+with open("input.txt",'r') as r_input:
+    for i in range(line_len):
+        input_line=r_input.readline()
+        input_line=input_line.split()
+        for j in range(len(input_line)):
+            if input_line[j].isnumeric()==True:
+                Token="<NumberToken>"
+            else:
+                Token=GetToken(input_line[j])
+                if Token=="EROR":
+                    print("Lexim EROR in line ",i)
+                    exit()
             
+            w_output.write(Token)
+        w_output.write("\n")
+        
+w_output.close()  
     
     
