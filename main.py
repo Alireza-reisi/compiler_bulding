@@ -1,0 +1,6 @@
+import LexicalAnalyzer
+
+
+
+
+LexicalAnalyzer.Run()
