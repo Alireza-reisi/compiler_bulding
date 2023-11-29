@@ -1,13 +1,16 @@
 <IfToken>
 <ElseifToken>
-<VarToken><ElseToken>
+<VarToken0><ElseToken>
 <ForToken><Plus>
 <CallToken>
 <DefToken>
 <InputToken>
+<VarToken1>
 <OutputToken><NumberToken>
 <Minus>
+<VarToken0>
 <Multiplication>
 <NumberToken>
 <NumberToken>
 <NumberToken>
+<VarToken1>

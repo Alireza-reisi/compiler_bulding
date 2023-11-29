@@ -488,6 +488,8 @@ def GetToken(Lexim):
 
 
 def Run():
+    var_index=0
+    varubales=[] # for repeatedly var's
     with open("input.txt",'r') as r_input: 
         line_len=len(r_input.readlines())
         
@@ -518,7 +520,18 @@ def Run():
                     if Token=="EROR":
                         print("Lexim EROR in line ",i)
                         exit()
-                
+                    elif Token=="<VarToken>":
+                        Is=False
+                        for i in range (len(varubales)):
+                            if input_line[j]==varubales[i]:
+                                Is=True
+                                Token="<VarToken"+str(i)+">"
+                                break
+                        if Is==False:
+                            Token="<VarToken"+str(var_index)+">"
+                            varubales.append(input_line[j])
+                            var_index+=1
+                            
                 w_output.write(Token)
             w_output.write("\n")
             
