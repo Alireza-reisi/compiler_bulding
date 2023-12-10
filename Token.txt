@@ -1,16 +1,26 @@
-<IfToken>
-<ElseifToken>
-<VarToken0><ElseToken>
-<ForToken><Plus>
-<CallToken>
-<DefToken>
-<InputToken>
-<VarToken1>
-<OutputToken><NumberToken>
-<Minus>
-<VarToken0>
-<Multiplication>
-<NumberToken>
-<NumberToken>
-<NumberToken>
-<VarToken1>
+<Var0> <=> <Input> <(> <)> 
+<Var1> <=> <Float> 
+<Var2> <=> <Int> 
+<If> <(> <Var2> <Equal> <Int> <)> <{> <Output> <(> <String> <)> <}> 
+<Elseif> <(> <Var2> <Equal> <Int> <)> <{> <Output> <(> <String> <)> <}> 
+<Else> <{> <Output> <(> <String> <)> <}> 
+<Var3> <=> <String> 
+<For> <(> <Var4> <=> <Int> <;> <Var4> <=> <Var4> <++> <;> <Var4> <SmallerEqual> <Int> <)> <{> <Output> <(> <Var3> <)> <}> 
+<Var5> <=> <Int> 
+<Call> <(> <Var5> <)> 
+<Def> <DefName> <(> <Var5> <)> <{> 
+<For> <(> <Var4> <=> <Int> <;> <Var4> <=> <Var4> <++> <;> <Var4> <SmallerEqual> <Int> <)> <{> <Output> <(> <Var3> <)> <}> 
+<Output> <(> <String> <)> 
+<If> <(> <Var5> <Equal> <Int> <)> <{> <Output> <(> <String> <)> <}> 
+<}> 
+<Output> <(> <Var0> <)> 
+
+<Var6> <=> <Var2> 
+<Output> <(> <Var6> <)> 
+<Var7> <=> <Var2> <*> <Int> 
+<Var8> <=> <Var2> </> <Int> 
+<Var9> <=> <Var2> <++> 
+<Var10> <=> <Var2> <--> 
+
+<Var1> <=> <Var1> <^> <Int> 
+

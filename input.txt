@@ -1,16 +1,26 @@
-pol_serat
-behesht
-15_rtchgh4 jahanam
-namaz + 
-dastoor
-dastoorat_elahi
-doa
-15_rtchghfusi
-ejabat 842965
--
-15_rtchgh4
-*
-294863894
-4923074
-7865874
-15_rtchghfusi
+_15_input = doa ( )
+_15_z = 2.5
+_15_ali = 124
+pol_serat ( _15_ali == 19 ) { ejabat ( "!" ) }
+behesht ( _15_ali == 24 ) { ejabat ( "Yes" ) }
+jahanam { ejabat ( "No" ) }
+_15_Yes = "YehYeh"
+namaz ( _15_i = 0 ; _15_i = _15_i ++ ; _15_i <= 10 ) { ejabat ( _15_Yes ) }
+_15_func = 123
+dastoor ( _15_func )
+dastoorat_elahi $alireza ( _15_func ) { 
+    namaz ( _15_i = 0 ; _15_i = _15_i ++ ; _15_i <= 10 ) { ejabat ( _15_Yes ) }
+    ejabat ( "---------------------" )
+    pol_serat ( _15_func == 123 ) { ejabat ( "!" ) }
+ }
+ejabat ( _15_input )
+
+_15_second = _15_ali
+ejabat ( _15_second )
+_15_m = _15_ali * 2 
+_15_n = _15_ali / 2 
+_15_o = _15_ali ++  
+_15_p = _15_ali -- 
+ 
+_15_z = _15_z ^ 2
+

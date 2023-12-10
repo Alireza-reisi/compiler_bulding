@@ -1,10 +1,14 @@
+
 def GetToken(Lexim):
     case=0
     i=0
     while True:
         match case:
             case 0:
-                if(Lexim[i]=="1" and i<len(Lexim)):
+                if((Lexim[i]>='0' and Lexim[i]<='9') and i<len(Lexim)):
+                    i+=1
+                    case="intnumber"
+                elif(Lexim[i]=="_" and i<len(Lexim)):
                     i+=1
                     case="var1"
                 elif(Lexim[i]=="p" and i<len(Lexim)):
@@ -25,6 +29,12 @@ def GetToken(Lexim):
                 elif(Lexim[i]=="e" and i<len(Lexim)):
                     i+=1
                     case="output1"
+                elif(Lexim[i]=='"' and i<len(Lexim)):
+                    i+=1
+                    case="string1"
+                elif(Lexim[i]=="$" and i<len(Lexim)):
+                    i+=1
+                    case="def_name1"    
                 else:
                     case="operations"
                     
@@ -43,32 +53,33 @@ def GetToken(Lexim):
             # ----------------------------
             
             case "var1":
-                if(Lexim[i]=="5" and i<len(Lexim)):
+                if(Lexim[i]=="1" and i<len(Lexim)):
                     i+=1
                     case="var2"
                 else:
                     return "EROR"
             case "var2":
-                if(Lexim[i]=="_" and i<len(Lexim)):
+                if(Lexim[i]=="5" and i<len(Lexim)):
                     i+=1
                     case="var3"
                 else:
                     return "EROR"
-            
             case "var3":
-                if (Lexim[i]>='0' and Lexim[i]<='9') or (Lexim[i]>="A" and Lexim[i]<="Z") or (Lexim[i]>="a" and Lexim[i]<="z") or (Lexim[i]=="_"):
+                if(Lexim[i]=="_" and i<len(Lexim)):
                     i+=1
                     case="var4"
                 else:
                     return "EROR"
+            
             case "var4":
-                if (i==len(Lexim)):
-                    return "<VarToken>"
+                if (i==len(Lexim))and (i>4):
+                    return "<Var> "
                 elif (Lexim[i]>='0' and Lexim[i]<='9') or (Lexim[i]>="A" and Lexim[i]<="Z") or (Lexim[i]>="a" and Lexim[i]<="z") or (Lexim[i]=="_"):
                     i+=1
                     case="var4"
                 else:
                     return "EROR"
+            
             # ----------------------------
             
             case "if1":
@@ -121,7 +132,7 @@ def GetToken(Lexim):
                     return "EROR"
             case "if9":
                 if(i==len(Lexim)):
-                    return "<IfToken>"
+                    return "<If> "
                 else:
                     return "EROR"
             
@@ -165,7 +176,7 @@ def GetToken(Lexim):
                     return "EROR"
             case "else_if7":
                 if(i==len(Lexim)):
-                    return "<ElseifToken>"
+                    return "<Elseif> "
                 else:
                     return "EROR"
             
@@ -209,7 +220,7 @@ def GetToken(Lexim):
                     return "EROR"
             case "else7":
                 if(i==len(Lexim)):
-                    return "<ElseToken>"
+                    return "<Else> "
                 else:
                     return "EROR"
             
@@ -241,7 +252,7 @@ def GetToken(Lexim):
                     return "EROR"
             case "for5":
                 if(i==len(Lexim)):
-                    return "<ForToken>"
+                    return "<For> "
                 else:
                     return "EROR"
             
@@ -279,7 +290,7 @@ def GetToken(Lexim):
                     return "EROR"
             case "def6":
                 if (i==len(Lexim)):
-                    return "<CallToken>" 
+                    return "<Call> " 
                 elif(Lexim[i]=="a" and i<len(Lexim)):
                     i+=1
                     case="def7"
@@ -329,7 +340,26 @@ def GetToken(Lexim):
                     return "EROR"
             case "def14":
                 if(i==len(Lexim)):
-                    return"<DefToken>"
+                    return"<Def> "
+                else:
+                    return "EROR"
+                
+            # ----------------------------
+            
+            case "def_name1":
+                if i<len(Lexim):
+                    if (Lexim[i]>='0' and Lexim[i]<='9') or (Lexim[i]>="A" and Lexim[i]<="Z") or (Lexim[i]>="a" and Lexim[i]<="z") or (Lexim[i]=="_"):
+                        i+=1
+                        case="def_name2"
+                else:
+                    return "EROR"
+                
+            case "def_name2":
+                if i==len(Lexim):
+                    return "<DefName> "
+                elif (Lexim[i]>='0' and Lexim[i]<='9') or (Lexim[i]>="A" and Lexim[i]<="Z") or (Lexim[i]>="a" and Lexim[i]<="z") or (Lexim[i]=="_"):
+                    i+=1
+                    case="def_name2"
                 else:
                     return "EROR"
             
@@ -343,7 +373,7 @@ def GetToken(Lexim):
                     return "EROR"
             case "input2":
                 if (i==len(Lexim)):
-                    return("<InputToken>")
+                    return("<Input> ")
                 else:
                     return "EROR"
             
@@ -381,44 +411,96 @@ def GetToken(Lexim):
                     return "EROR"
             case "output6":
                 if(i==len(Lexim)):
-                    return "<OutputToken>"
+                    return "<Output> "
                 else:
                     return "EROR"
             
             # ----------------------------
             
+            case "string1" :
+                if ((Lexim[i] =='"') and (i==len(Lexim)-1)):
+                    return "<String> "
+                elif i<len(Lexim):
+                    i+=1
+                    case="string1"
+                else:
+                    return "EROR"
+            
+            # ----------------------------
+            
+            case "intnumber" :
+                if i<len(Lexim):
+                    if (Lexim[i]>='0' and Lexim[i]<='9'):
+                        i+=1 
+                        case="intnumber"
+                    elif Lexim[i]=='.':
+                        i+=1
+                        case="floatnumber1"
+                elif i==len(Lexim):
+                    return "<Int> "
+                else:
+                    return "EROR"
+                
+            case "floatnumber1" :
+                if i<len(Lexim):
+                    if (Lexim[i]>='0' and Lexim[i]<='9'):
+                        i+=1 
+                        case="floatnumber2"
+                else:
+                    return "EROR"
+                    
+            case "floatnumber2" :
+                if i==len(Lexim):
+                    return "<Float> "
+                elif (Lexim[i]>='0' and Lexim[i]<='9') and i<len(Lexim):
+                    i+=1 
+                    case="floatnumber2"
+                else:
+                    return "EROR"
+            # ---------------------------- 
+            
             case "operations":
                 if Lexim[i]=="+" and len(Lexim)==1:
-                    return "<Plus>"
-                if Lexim[i]=="-" and len(Lexim)==1:
-                    return "<Minus>"
-                if Lexim[i]=="*" and len(Lexim)==1:
-                    return "<Multiplication>"
-                if Lexim[i]=="/" and len(Lexim)==1:
-                    return "<Division>"
-                if Lexim[i]=="^" and len(Lexim)==1:
-                    return "<Square>"
-                if Lexim[i]=="+" and len(Lexim)==2:
+                    return "<+> "
+                elif Lexim[i]=="-" and len(Lexim)==1:
+                    return "<-> "
+                elif Lexim[i]=="*" and len(Lexim)==1:
+                    return "<*> "
+                elif Lexim[i]=="/" and len(Lexim)==1:
+                    return "</> "
+                elif Lexim[i]=="^" and len(Lexim)==1:
+                    return "<^> "
+                elif Lexim[i]=="+" and len(Lexim)==2:
                     if Lexim[i+1]=="+":
-                        return "<PlusOne>"
-                if Lexim[i]=="-" and len(Lexim)==2:
+                        return "<++> "
+                elif Lexim[i]=="-" and len(Lexim)==2:
                     if Lexim[i+1]=="-" :
-                        return "<MinusOne>"
-                if Lexim[i]=="=" and len(Lexim)==1:
-                    return "<Quantification>" 
-                if Lexim[i]=="=" and len(Lexim)==2:
+                        return "<--> "
+                elif Lexim[i]=="=" and len(Lexim)==1:
+                    return "<=> " 
+                elif Lexim[i]=="=" and len(Lexim)==2:
                     if Lexim[i+1]=="=":
-                        return "<Equal>" 
-                if Lexim[i]=="<" and len(Lexim)==2:
+                        return "<Equal> " 
+                elif Lexim[i]=="<" and len(Lexim)==2:
                     if Lexim[i+1]=="=":
-                        return "<SmallerEqual>" 
-                if Lexim[i]==">" and len(Lexim)==2:
+                        return "<SmallerEqual> " 
+                elif Lexim[i]==">" and len(Lexim)==2:
                     if  Lexim[i+1]=="=":
-                        return "<BiggerEqual>" 
-                if Lexim[i]==">" and len(Lexim)==1:
-                    return "<Bigger>" 
-                if Lexim[i]=="<" and len(Lexim)==1:
-                    return "<Smaller>"
+                        return "<BiggerEqual> " 
+                elif Lexim[i]==">" and len(Lexim)==1:
+                    return "<Bigger> " 
+                elif Lexim[i]=="<" and len(Lexim)==1:
+                    return "<Smaller> "
+                elif Lexim[i]=="(" and len(Lexim)==1:
+                    return "<(> "
+                elif Lexim[i]==")" and len(Lexim)==1:
+                    return "<)> "
+                elif Lexim[i]==";" and len(Lexim)==1:
+                    return "<;> "
+                elif Lexim[i]=="{" and len(Lexim)==1:
+                    return "<{> "
+                elif Lexim[i]=="}" and len(Lexim)==1:
+                    return "<}> "
                 else:
                     return "EROR"
                 
@@ -429,62 +511,6 @@ def GetToken(Lexim):
         
 # ===============================================
 # ==================== main: ====================
-
-
-# # -------- read file --------
-# r_input=open("input.txt","r")
-# List=r_input.read()
-# r_input.close()
-# List=List.split()
-
-# open('Token.txt', 'w').close() # clear Token.txt file
-
-
-# for i in range (len(List)):
-#     if List[i].isnumeric()==True:
-#         Token="<NumberToken>"
-#     else:
-#         Token=GetToken(List[i])
-    
-#     # GetToken returns : 
-#     #<VarToken>
-#     #<IfToken>
-#     #<ElseifToken>
-#     #<ElseToken>
-#     #<ForToken>
-#     #<CallToken>
-#     #<DefToken>
-#     #<InputToken>
-#     #<OutputToken>
-#     #operation tokens:  # <Plus><minus><Mulipliaction><Division><Square><PlusOne><MinusOne>
-#                         # <Quantification><Equal><SmallerEqual><BiggerEqual><Smaller><Bigger>
-#     #EROR
-    
-#     if Token=="EROR":
-#         print("Syntax Eror!")
-        
-#         break
-#     w_output=open("Token.txt","a")
-#     w_output.write(Token)
-#     w_output.write("\n")
-#     w_output.close()
-
-# # print Tokens: 
- 
-# # r_Token=open("Token.txt","r")
-# # List1=r_Token.read()
-# # List1=List1.split('\n')
-# # for x in List1:
-# #     print(x)
-# # r_Token.close()
-
-        
-        
-        
-        
-# ===============================================
-# =================== main2: ====================
-
 
 
 def Run():
@@ -500,38 +526,35 @@ def Run():
             input_line=r_input.readline()
             input_line=input_line.split()
             for j in range(len(input_line)):
-                if input_line[j].isnumeric()==True: # if our input was number
-                    Token="<NumberToken>"
-                else:
-                    Token=GetToken(input_line[j])
-                    #GetToken returns : 
-                    #<VarToken>
-                    #<IfToken>
-                    #<ElseifToken>
-                    #<ElseToken>
-                    #<ForToken>
-                    #<CallToken>
-                    #<DefToken>
-                    #<InputToken>
-                    #<OutputToken>
-                    #operation tokens:  # <Plus><minus><Mulipliaction><Division><Square><PlusOne><MinusOne>
-                                        # <Quantification><Equal><SmallerEqual><BiggerEqual><Smaller><Bigger>
-                    # EROR
-                    if Token=="EROR":
-                        print("Lexim EROR in line ",i)
-                        exit()
-                    elif Token=="<VarToken>":
-                        Is=False
-                        for i in range (len(varubales)):
-                            if input_line[j]==varubales[i]:
-                                Is=True
-                                Token="<VarToken"+str(i)+">"
-                                break
-                        if Is==False:
-                            Token="<VarToken"+str(var_index)+">"
-                            varubales.append(input_line[j])
-                            var_index+=1
-                            
+                Token=GetToken(input_line[j])
+                #GetToken returns : 
+                #<Var>
+                #<If>
+                #<Elseif>
+                #<Else>
+                #<For>
+                #<Call>
+                #<Def>
+                #<Input>
+                #<Output>
+                #operation tokens:  #<+> <-> <*> </> <^> <++> <--> <=>
+                                    #<Equal> <SmallerEqual> <BiggerEqual> <Smaller> <Bigger>
+                # EROR
+                if Token=="EROR":
+                    print("Lexim EROR in line ",i)
+                    # exit()
+                elif Token=="<Var> ":
+                    Is=False
+                    for i in range (len(varubales)):
+                        if input_line[j]==varubales[i]:
+                            Is=True
+                            Token="<Var"+str(i)+"> "
+                            break
+                    if Is==False:
+                        Token="<Var"+str(var_index)+"> "
+                        varubales.append(input_line[j])
+                        var_index+=1
+                        
                 w_output.write(Token)
             w_output.write("\n")
             
