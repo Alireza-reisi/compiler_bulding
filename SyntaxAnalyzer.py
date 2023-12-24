@@ -1,29 +1,38 @@
 class SyntaxAnalyzer():
-    def __init__(self,Line):
-        self.Line=Line
+    def __init__(self,File):
+        self.File=File
         self.Head=0
-        self.Lookahead=self.Line[self.Head]  
+        self.Lookahead=self.File[self.Head]  
     
     
     
     def Match(self,Var):
-        if self.Lookahead==Var:
-            self.Head+=1
-            if self.Head == len(self.Line):
-                self.Lookahead=="$"
-            else:
-                self.Lookahead=self.Line[self.Head]
+        if Var == "<Var":
+            if self.Lookahead[:4]==Var:
+                self.Head+=1
+                if self.Head == len(self.File):
+                    self.Lookahead="$"
+                else:
+                    self.Lookahead=self.File[self.Head]
             return True
-        else:
-            print("SyntaxError")
-            exit()
+        else: 
+            if self.Lookahead==Var:
+                self.Head+=1
+                if self.Head == len(self.File):
+                    self.Lookahead="$"
+                else:
+                    self.Lookahead=self.File[self.Head]
+                return True
+            else:
+                print("SyntaxError")
+                exit()
 
 
 
     def S(self):
-        if (self.Lookahead=="<if>" or self.Lookahead=="<For>" or self.Lookahead=="<Call>" or self.Lookahead=="<Def>" or self.Lookahead=="Output"):
-            self.Syntax()
-        elif (self.Lookahead=="<Var>"):
+        if (self.Lookahead=="<If>" or self.Lookahead=="<For>" or self.Lookahead=="<Call>" or self.Lookahead=="<Def>" or self.Lookahead=="<Output>"):
+            self.Syntax()      
+        elif (len(self.Lookahead)>=6 and self.Lookahead[:4]=="<Var"):
             self.Assignment()
         else:
             print("SyntaxError")
@@ -32,8 +41,8 @@ class SyntaxAnalyzer():
 
     
     def Syntax(self):
-        if (self.Lookahead=="<if>"):
-            self.Match("<if>")
+        if (self.Lookahead=="<If>"):
+            self.Match("<If>")
             self.Match("<(>")
             self.Compare()
             self.Match("<)>")
@@ -69,13 +78,14 @@ class SyntaxAnalyzer():
             self.Caller()
             self.Match("<)>")
             self.Match("<{>")
-            self.S()
+            while self.Lookahead!="<}>":
+                self.S()
             self.Match("<}>")
             
         elif (self.Lookahead=="<Output>"):
             self.Match("<Output>")
             self.Match("<(>")
-            self.Match("<Var>")
+            self.Match("<Var")
             self.Match("<)>")
             
         else:
@@ -105,17 +115,13 @@ class SyntaxAnalyzer():
             self.Match("<}>")
         
         else:
-            print("SyntaxError")
-            exit()
+            return
 
             
             
     def ElseifCondition(self):
         if (self.Lookahead=="<Else>"):
             self.Match("<Else>")
-            self.Match("<(>")
-            self.Compare()
-            self.Match("<)>")
             self.Match("<{>")
             self.S()
             self.Match("<}>")
@@ -142,14 +148,14 @@ class SyntaxAnalyzer():
 
 
     def Assignment(self):
-        self.Match("<Var>")
+        self.Match("<Var")
         self.Match("<=>")
         self.VarAssignment()
 
 
 
     def VarAssignment(self):
-        if (self.Lookahead=="<Var>" or self.Lookahead=="<Int>" or self.Lookahead=="<Float>" or self.Lookahead=="<String>"):
+        if ((len(self.Lookahead)>=6 and self.Lookahead[:4]=="<Var") or self.Lookahead=="<Int>" or self.Lookahead=="<Float>" or self.Lookahead=="<String>"):
             self.Variable()
             self.X()
             
@@ -237,8 +243,8 @@ class SyntaxAnalyzer():
 
 
     def Variable(self):
-        if (self.Lookahead=="<Var>"):
-            self.Match("<Var>")
+        if ((len(self.Lookahead)>=6 and self.Lookahead[:4]=="<Var")):
+            self.Match("<Var")
             
         elif (self.Lookahead=="<Int>"):
             self.Match("<Int>")
@@ -255,6 +261,11 @@ class SyntaxAnalyzer():
             
             
             
-            
-            
-        
+def Run():
+    with open("Token.txt",'r') as r_input:
+        File=r_input.read()
+    File=File.split()
+    Analyzed_file=SyntaxAnalyzer(File)
+    while Analyzed_file.Lookahead!="$":
+        Analyzed_file.S() 
+    print("SYntax is OK")       

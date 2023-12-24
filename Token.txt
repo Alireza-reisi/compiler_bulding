@@ -1,16 +1,16 @@
 <Var0> <=> <Input> <(> <)> 
 <Var1> <=> <Float> 
 <Var2> <=> <Int> 
-<If> <(> <Var2> <Equal> <Int> <)> <{> <Output> <(> <String> <)> <}> 
-<Elseif> <(> <Var2> <Equal> <Int> <)> <{> <Output> <(> <String> <)> <}> 
-<Else> <{> <Output> <(> <String> <)> <}> 
+<If> <(> <Var2> <Equal> <Int> <)> <{> <Output> <(> <Var2> <)> <}> 
+<Elseif> <(> <Var2> <Equal> <Int> <)> <{> <Output> <(> <Var2> <)> <}> 
+<Else> <{> <Output> <(> <Var1> <)> <}> 
 <Var3> <=> <String> 
-<For> <(> <Var4> <=> <Int> <;> <Var4> <=> <Var4> <++> <;> <Var4> <SmallerEqual> <Int> <)> <{> <Output> <(> <Var3> <)> <}> 
+<For> <(> <Var4> <=> <Int> <;> <Var4> <++> <;> <Var4> <SmallerEqual> <Int> <)> <{> <Output> <(> <Var3> <)> <}> 
 <Var5> <=> <Int> 
 <Def> <DefName> <(> <Var5> <,> <Var3> <)> <{> 
-<For> <(> <Var4> <=> <Int> <;> <Var4> <=> <Var4> <++> <;> <Var4> <SmallerEqual> <Int> <)> <{> <Output> <(> <Var3> <)> <}> 
-<Output> <(> <String> <)> 
-<If> <(> <Var5> <Equal> <Int> <)> <{> <Output> <(> <String> <)> <}> 
+<For> <(> <Var4> <=> <Int> <;> <Var4> <++> <;> <Var4> <SmallerEqual> <Int> <)> <{> <Output> <(> <Var3> <)> <}> 
+<Output> <(> <Var5> <)> 
+<If> <(> <Var5> <Equal> <Int> <)> <{> <Output> <(> <Var0> <)> <}> 
 <}> 
 <Call> <DefName> <(> <Var5> <,> <Var3> <)> 
 <Output> <(> <Var0> <)> 
