@@ -7,12 +7,12 @@ jahanam { ejabat ( "No" ) }
 _15_Yes = "YehYeh"
 namaz ( _15_i = 0 ; _15_i = _15_i ++ ; _15_i <= 10 ) { ejabat ( _15_Yes ) }
 _15_func = 123
-dastoor ( _15_func )
-dastoorat_elahi $alireza ( _15_func ) { 
+dastoorat_elahi $alireza ( _15_func , _15_Yes ) { 
     namaz ( _15_i = 0 ; _15_i = _15_i ++ ; _15_i <= 10 ) { ejabat ( _15_Yes ) }
     ejabat ( "---------------------" )
     pol_serat ( _15_func == 123 ) { ejabat ( "!" ) }
- }
+}
+dastoor $alireza ( _15_func , _15_Yes )
 ejabat ( _15_input )
 
 _15_second = _15_ali

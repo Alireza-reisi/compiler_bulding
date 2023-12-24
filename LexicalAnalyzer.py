@@ -460,7 +460,9 @@ def GetToken(Lexim):
             # ---------------------------- 
             
             case "operations":
-                if Lexim[i]=="+" and len(Lexim)==1:
+                if Lexim[i]=="," and len(Lexim)==1:
+                    return "<,> "
+                elif Lexim[i]=="+" and len(Lexim)==1:
                     return "<+> "
                 elif Lexim[i]=="-" and len(Lexim)==1:
                     return "<-> "

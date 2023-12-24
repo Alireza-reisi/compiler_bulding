@@ -7,12 +7,12 @@
 <Var3> <=> <String> 
 <For> <(> <Var4> <=> <Int> <;> <Var4> <=> <Var4> <++> <;> <Var4> <SmallerEqual> <Int> <)> <{> <Output> <(> <Var3> <)> <}> 
 <Var5> <=> <Int> 
-<Call> <(> <Var5> <)> 
-<Def> <DefName> <(> <Var5> <)> <{> 
+<Def> <DefName> <(> <Var5> <,> <Var3> <)> <{> 
 <For> <(> <Var4> <=> <Int> <;> <Var4> <=> <Var4> <++> <;> <Var4> <SmallerEqual> <Int> <)> <{> <Output> <(> <Var3> <)> <}> 
 <Output> <(> <String> <)> 
 <If> <(> <Var5> <Equal> <Int> <)> <{> <Output> <(> <String> <)> <}> 
 <}> 
+<Call> <DefName> <(> <Var5> <,> <Var3> <)> 
 <Output> <(> <Var0> <)> 
 
 <Var6> <=> <Var2> 
